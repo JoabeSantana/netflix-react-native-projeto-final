@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Dimensions, TouchableWithoutFeedback} from 'react-native';
-import {useSpring, animated} from 'react-spring';
+import React, { useState } from 'react';
+import { Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { useSpring, animated } from 'react-spring';
 
 import styled from 'styled-components/native';
 
@@ -30,8 +30,8 @@ const MovieCard = styled.View`
   padding-left: 0px;
 `;
 
-const Movies = ({label, item}) => {
-  const [pressing, setPressedIn] = useState({pressed: false});
+const Movies = ({ label, item }) => {
+  const [pressing, setPressedIn] = useState({ pressed: false });
 
   const translate = useSpring({
     to: {
@@ -51,14 +51,14 @@ const Movies = ({label, item}) => {
             <MovieCard key={String(index)}>
               <TouchableWithoutFeedback
                 onPressOut={() => {
-                  setPressedIn({pressed: false});
+                  setPressedIn({ pressed: false });
                 }}
                 onPressIn={() => {
-                  setPressedIn({pressed: true, index: index});
+                  setPressedIn({ pressed: true, index: index });
                 }}>
                 <AnimatedMoviePoster
                   style={
-                    index === pressing.index ? {transform: [translate]} : null
+                    index === pressing.index ? { transform: [translate] } : null
                   }
                   resizeMode="cover"
                   source={movie}

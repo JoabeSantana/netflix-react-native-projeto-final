@@ -2,8 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components/native';
 
-import {Feather, Ionicons} from '@expo/vector-icons';
-import {useSpring, animated} from 'react-spring';
+import { Feather, Ionicons } from '@expo/vector-icons';
+import { useSpring, animated } from 'react-spring';
 
 const Container = styled.View`
   position: absolute;
