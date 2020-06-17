@@ -84,3 +84,4 @@ buck-out/
 # Expo
 .expo/*
 
+android/app/src/main/assets/appcenter-config.json
