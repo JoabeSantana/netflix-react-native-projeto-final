@@ -1,14 +1,15 @@
 import React from 'react';
 
-import {StatusBar, Dimensions} from 'react-native';
+import { StatusBar, Dimensions } from 'react-native';
 
-import {LinearGradient} from 'expo-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import styled from 'styled-components/native';
 
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Movies from '../components/Movies';
+import { ProfileContext } from '../ProfileContext';
 
 const api = [
   require('../assets/movies/movie1.jpg'),
@@ -33,30 +34,35 @@ const Gradient = styled(LinearGradient)`
 
 const Home = () => {
   return (
-    <>
-      <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
-      <Container>
-        <Poster source={require('../assets/poster.jpg')}>
-          <Gradient
-            locations={[0, 0.2, 0.6, 0.93]}
-            colors={[
-              'rgba(0,0,0,0.5)',
-              'rgba(0,0,0,0.0)',
-              'rgba(0,0,0,0.0)',
-              'rgba(0,0,0,1)',
-            ]}>
-            <Header />
-            <Hero />
-          </Gradient>
-        </Poster>
-        <Movies label="Recomendados" item={api} />
-        <Movies label="Top 10" item={api} />
-      </Container>
-    </>
+    <ProfileContext.Consumer>
+      {(value) => (
+        <>
+          <StatusBar
+            translucent
+            backgroundColor="transparent"
+            barStyle="light-content"
+          />
+          <Container>
+            <Poster source={require('../assets/poster.jpg')}>
+              <Gradient
+                locations={[0, 0.2, 0.6, 0.93]}
+                colors={[
+                  'rgba(0,0,0,0.5)',
+                  'rgba(0,0,0,0.0)',
+                  'rgba(0,0,0,0.0)',
+                  'rgba(0,0,0,1)',
+                ]}>
+                <Header />
+                <Hero />
+              </Gradient>
+            </Poster>
+            <Movies label="Recomendados" item={api} />
+            <Movies label="Top 10" item={api} />
+            <Movies label={"Continuar ${avatar}"} item={api} />
+          </Container>
+        </>
+      )}
+    </ProfileContext.Consumer>
   );
 };
 
