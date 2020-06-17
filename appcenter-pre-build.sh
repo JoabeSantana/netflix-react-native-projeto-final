@@ -2,7 +2,7 @@ GOOGLE_JSON_FILE=$APPCENTER_SOURCE_DIRECTORY/android/app/google-services.json
 
 touch $GOOGLE_JSON_FILE
 
-if [-e "$GOOGLE_JSON_FILE" ]
+if [ -e "$GOOGLE_JSON_FILE" ]
 then
     echo "Updating Google Json"
     echo "$GOOGLE_JSON_FILE" > $GOOGLE_JSON_FILE
