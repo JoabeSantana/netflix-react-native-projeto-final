@@ -1,4 +1,6 @@
 {
+  "name": "netflix-react-native",
+  "version": "1.0.0",
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",

@@ -20,8 +20,7 @@ import org.unimodules.core.interfaces.SingletonModule;
 import expo.modules.constants.ConstantsPackage;
 import expo.modules.permissions.PermissionsPackage;
 import expo.modules.filesystem.FileSystemPackage;
-import expo.modules.updates.UpdatesController;
-
+import com.microsoft.codepush.react.CodePush;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
@@ -52,21 +51,13 @@ public class MainApplication extends Application implements ReactApplication {
     }
 
     @Override
-    protected @Nullable String getJSBundleFile() {
-      if (BuildConfig.DEBUG) {
-        return super.getJSBundleFile();
-      } else {
-        return UpdatesController.getInstance().getLaunchAssetFile();
-      }
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
     }
 
     @Override
     protected @Nullable String getBundleAssetName() {
-      if (BuildConfig.DEBUG) {
         return super.getBundleAssetName();
-      } else {
-        return UpdatesController.getInstance().getBundleAssetName();
-      }
     }
   };
 
@@ -80,10 +71,6 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
-
-    if (!BuildConfig.DEBUG) {
-      UpdatesController.initialize(this);
-    }
   }
 
   /**

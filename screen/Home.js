@@ -58,7 +58,7 @@ const Home = () => {
             </Poster>
             <Movies label="Recomendados" item={api} />
             <Movies label="Top 10" item={api} />
-            <Movies label={"Continuar ${avatar}"} item={api} />
+            <Movies label={"Teste Deploys"} item={api} />
           </Container>
         </>
       )}
