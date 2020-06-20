@@ -33,22 +33,22 @@ export default class App extends React.Component {
             <Stack.Screen
               name='Abas'
               component={Abas}
-              options={{ headerShown: true }}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name='Camera'
               component={Camera}
-              options={{ headerShown: true }}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name='ProfileToEdit'
               component={ProfileToEdit}
-              options={{ headerShown: true }}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name='ChooseIcon'
               component={ChooseIcon}
-              options={{ headerShown: true }}
+              options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>
