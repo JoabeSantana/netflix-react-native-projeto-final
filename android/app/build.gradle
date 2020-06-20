@@ -130,7 +130,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     defaultConfig {
         applicationId 'netflix.react'
         minSdkVersion rootProject.ext.minSdkVersion
@@ -186,6 +185,7 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_geolocation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     addUnimodulesDependencies()
