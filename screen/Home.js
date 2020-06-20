@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { StatusBar, Dimensions } from 'react-native';
 
@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Movies from '../components/Movies';
 import { ProfileContext } from '../ProfileContext';
+import { getLocation, filterByCountry } from './services/movieFilter';
 
 const api = [
   require('../assets/movies/movie1.jpg'),
@@ -33,6 +34,29 @@ const Gradient = styled(LinearGradient)`
 `;
 
 const Home = () => {
+  const [movies, setMovies] = useState([]);
+  const [nationalMovies, setNationalMovies] = useState([]);
+
+  useEffect(() => {
+    const loadingMovies = async () => {
+      const moviesJson = require('../assets/Movies.json');
+      const position = await getLocation();
+      const nationalCountries = await filterByCountry(moviesJson, position);
+      setNationalMovies(nationalCountries);
+
+      const nationalCountriesTitles = nationalCountries.map(
+        (item, index) => item.Title,
+      );
+      //console.log(nationalCountriesTitles);
+      const moviesWithoutNationals = moviesJson.filter((item, index) => {
+        return !nationalCountriesTitles.includes(item.Title);
+      });
+
+      setMovies(moviesWithoutNationals);
+    };
+    loadingMovies();
+  }, [movies]);
+
   return (
     <ProfileContext.Consumer>
       {(value) => (
@@ -56,9 +80,8 @@ const Home = () => {
                 <Hero />
               </Gradient>
             </Poster>
-            <Movies label="Recomendados" item={api} />
-            <Movies label="Top 10" item={api} />
-            <Movies label={"Teste Deploys"} item={api} />
+            <Movies label="Recomendados" data={movies} />
+            <Movies label="Nacionais" data={nationalMovies} />
           </Container>
         </>
       )}
