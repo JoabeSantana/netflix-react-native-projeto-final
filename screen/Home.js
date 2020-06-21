@@ -11,13 +11,7 @@ import Hero from '../components/Hero';
 import Movies from '../components/Movies';
 import { ProfileContext } from '../ProfileContext';
 import { getLocation, filterByCountry } from './services/movieFilter';
-
-const api = [
-  require('../assets/movies/movie1.jpg'),
-  require('../assets/movies/movie2.jpg'),
-  require('../assets/movies/movie3.jpg'),
-  require('../assets/movies/movie4.jpg'),
-];
+import { useSpring, animated } from 'react-spring';
 
 const Container = styled.ScrollView`
   flex: 1;
@@ -33,7 +27,18 @@ const Gradient = styled(LinearGradient)`
   height: 100%;
 `;
 
+const AnimatedPoster = animated(Poster);
+
 const Home = () => {
+  const propsAnimatedPoster = useSpring({
+    to: {
+      opacity: 1
+    },
+    from: {
+      opacity: 0
+    },
+    config: { duration: 5000 }
+  });
   const [movies, setMovies] = useState([]);
   const [nationalMovies, setNationalMovies] = useState([]);
 
@@ -67,7 +72,7 @@ const Home = () => {
             barStyle="light-content"
           />
           <Container>
-            <Poster source={require('../assets/poster.jpg')}>
+            <AnimatedPoster style={propsAnimatedPoster} source={require('../assets/poster.jpg')}>
               <Gradient
                 locations={[0, 0.2, 0.6, 0.93]}
                 colors={[
@@ -79,7 +84,7 @@ const Home = () => {
                 <Header />
                 <Hero />
               </Gradient>
-            </Poster>
+            </AnimatedPoster>
             <Movies label="Recomendados" data={movies} />
             <Movies label="Nacionais" data={nationalMovies} />
           </Container>
