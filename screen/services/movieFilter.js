@@ -1,5 +1,6 @@
 import Geocoder from 'react-native-geocoder';
 import Geolocation from '@react-native-community/geolocation';
+import { translate } from '../../languages/utils';
 
 export const getLocation = async () => {
     return new Promise((resolve, reject) => {
@@ -23,9 +24,11 @@ export const filterByCountry = async (movies, geolocation) => {
     });
     //console.log('location', location);
     const national = movies.filter((item, index) => {
+        //console.log(translate(location[0].country));
+        //console.log(translate(location[0].countryCode));
         return (
-            item.Country.indexOf(location[0].country) !== -1 ||
-            item.Country.indexOf(location[0].countryCode) !== -1);
+            item.Country.indexOf(translate(location[0].country)) !== -1 ||
+            item.Country.indexOf(translate(location[0].countryCode)) !== -1);
     });
     return national;
 }
