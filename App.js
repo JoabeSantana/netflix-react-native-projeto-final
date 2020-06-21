@@ -1,14 +1,12 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import Home from './screen/Home';
 import Abas from './routes/Abas';
-import { createStackNavigator, StackView } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Camera from './screen/Camera';
 import ProfileToEdit from './screen/ProfileToEdit';
 import ChooseIcon from './screen/ChooseIcon';
 import { ProfileContext } from './screen/context/ProfileContext';
-import { getLanguageByDevice, setLanguage } from './languages/utils';
+import { setLanguage } from './languages/utils';
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
