@@ -4,6 +4,7 @@ import Avatar from '../components/Avatar';
 import { View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ProfileContext } from './context/ProfileContext';
+import { translate } from '../languages/utils';
 const Screen = styled.View`
   flex: 1;
   background-color: #000;
@@ -119,7 +120,7 @@ const More = (props) => {
                     <NetflixButton
                         onPress={() => editProfile(props.navigation, profilesAvailables)}>
                         <MaterialIcons name="edit" size={24} color="gray" />
-                        <ButtonLabel>Gerenciar perfis</ButtonLabel>
+                        <ButtonLabel>{translate("Manage Profiles")}</ButtonLabel>
                     </NetflixButton>
                 </Screen>
             )}

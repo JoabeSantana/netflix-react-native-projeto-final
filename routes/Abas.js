@@ -3,6 +3,9 @@ import { View, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo, AntDesign, MaterialIcons, Feather } from '@expo/vector-icons';
 import Home from '../screen/Home';
+import Search from '../screen/Search';
+import Soon from '../screen/Soon';
+import Downloads from '../screen/Downloads';
 import More from '../screen/More';
 import { translate } from '../languages/utils';
 
@@ -23,7 +26,7 @@ const Abas = (props) => {
             />
             <Tab.Screen
                 name="Busca"
-                component={Home}
+                component={Search}
                 options={{
                     tabBarLabel: translate('Search'),
                     tabBarIcon: ({ color, size }) => (
@@ -33,7 +36,7 @@ const Abas = (props) => {
             />
             <Tab.Screen
                 name="Em Breve"
-                component={Home}
+                component={Soon}
                 options={{
                     tabBarLabel: translate('Soon'),
                     tabBarIcon: ({ color, size }) => (
@@ -43,7 +46,7 @@ const Abas = (props) => {
             />
             <Tab.Screen
                 name="Downloads"
-                component={Home}
+                component={Downloads}
                 options={{
                     tabBarLabel: 'Downloads',
                     tabBarIcon: ({ color, size }) => (
