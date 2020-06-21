@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo, AntDesign, MaterialIcons, Feather } from '@expo/vector-icons';
 import Home from '../screen/Home';
 import More from '../screen/More';
+import { translate } from '../languages/utils';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,7 @@ const Abas = (props) => {
                 name="Home"
                 component={Home}
                 options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: translate('Home'),
                     tabBarIcon: ({ color, size }) => (
                         <Entypo name='home' size={size} color={color} />
                     ),
@@ -24,7 +25,7 @@ const Abas = (props) => {
                 name="Busca"
                 component={Home}
                 options={{
-                    tabBarLabel: 'Busca',
+                    tabBarLabel: translate('Search'),
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name='search1' size={size} color={color} />
                     ),
@@ -34,7 +35,7 @@ const Abas = (props) => {
                 name="Em Breve"
                 component={Home}
                 options={{
-                    tabBarLabel: 'Em Breve',
+                    tabBarLabel: translate('Soon'),
                     tabBarIcon: ({ color, size }) => (
                         <MaterialIcons name='perm-media' size={size} color={color} />
                     ),
@@ -54,7 +55,7 @@ const Abas = (props) => {
                 name="More"
                 component={More}
                 options={{
-                    tabBarLabel: 'More',
+                    tabBarLabel: translate('More'),
                     tabBarIcon: ({ color, size }) => (
                         <Feather name='menu' size={size} color={color} />
                     ),

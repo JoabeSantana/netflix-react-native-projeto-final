@@ -8,6 +8,7 @@ import Camera from './screen/Camera';
 import ProfileToEdit from './screen/ProfileToEdit';
 import ChooseIcon from './screen/ChooseIcon';
 import { ProfileContext } from './screen/context/ProfileContext';
+import { getLanguageByDevice, setLanguage } from './languages/utils';
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
@@ -19,7 +20,7 @@ export default class App extends React.Component {
       user: null,
       changeProfile: this.changeProfile,
     };
-
+    setLanguage();
   }
 
   changeProfile(item) {
