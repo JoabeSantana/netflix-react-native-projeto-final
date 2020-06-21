@@ -10,9 +10,9 @@ const Container = styled.TouchableOpacity`
 
 const avatarSize = css`
   width: ${(props) => {
-        console.log('avatarSize', props);
-        return props.big ? '100px' : '60px';
-    }};
+    //console.log('avatarSize', props);
+    return props.big ? '100px' : '60px';
+  }};
   height: ${(props) => (props.big ? '100px' : '60px')};
   margin: 10px;
 `;
@@ -42,36 +42,36 @@ const OverlayContainer = styled.View`
 `;
 
 const Editable = (props) => {
-    return props.edit ? (
-        <OverlayContainer big={props.big}>
-            <Overlay big={props.big} />
-            <MaterialIcons name="edit" size={24} color="white" />
-        </OverlayContainer>
-    ) : null;
+  return props.edit ? (
+    <OverlayContainer big={props.big}>
+      <Overlay big={props.big} />
+      <MaterialIcons name="edit" size={24} color="white" />
+    </OverlayContainer>
+  ) : null;
 };
 
 const Avatar = (props) => {
-    console.log('avatar', props);
-    return (
-        <Container style={{ alignItems: 'center' }} onPress={props.onPress}>
-            {props.uri ? (
-                <View>
-                    <AvatarIcon
-                        big={props.big}
-                        source={{ isStatic: true, uri: props.uri }}
-                    />
-                    <Editable edit={props.edit} {...props} />
-                </View>
-            ) : (
-                    <View>
-                        <AvatarIcon big={props.big} source={props.image} />
-                        <Editable edit={props.edit} {...props} />
-                    </View>
-                )}
+  //console.log('avatar', props);
+  return (
+    <Container style={{ alignItems: 'center' }} onPress={props.onPress}>
+      {props.uri ? (
+        <View>
+          <AvatarIcon
+            big={props.big}
+            source={{ isStatic: true, uri: props.uri }}
+          />
+          <Editable edit={props.edit} {...props} />
+        </View>
+      ) : (
+          <View>
+            <AvatarIcon big={props.big} source={props.image} />
+            <Editable edit={props.edit} {...props} />
+          </View>
+        )}
 
-            <AvatarText>{props.name}</AvatarText>
-        </Container>
-    );
+      <AvatarText>{props.name}</AvatarText>
+    </Container>
+  );
 };
 
 export default Avatar;

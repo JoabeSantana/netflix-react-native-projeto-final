@@ -1,18 +1,6 @@
 import Geocoder from 'react-native-geocoder';
 import Geolocation from '@react-native-community/geolocation';
 
-/* export const getLocation = async () => {
-    return new Promise((resolve, reject) => {
-        const onReceiveLocation = (geolocation) => {
-            resolve(geolocation);
-        };
-        Geolocation.getCurrentPosition(onReceiveLocation, (error) => {
-            console.log(error);
-            reject();
-        });
-    });
-}; */
-
 export const getLocation = async () => {
     return new Promise((resolve, reject) => {
         Geolocation.getCurrentPosition(
@@ -21,8 +9,8 @@ export const getLocation = async () => {
                 resolve(location);
             },
             (error) => {
-                console.log(error);
-                reject(location);
+                console.log('getCurrentPosition', error)
+                reject(error);
             }
         );
     });

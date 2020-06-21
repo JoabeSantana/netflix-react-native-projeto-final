@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import Avatar from '../components/Avatar';
 import { View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { ProfileContext } from '../ProfileContext';
+import { ProfileContext } from './context/ProfileContext';
 const Screen = styled.View`
   flex: 1;
   background-color: #000;
@@ -96,7 +96,7 @@ const More = (props) => {
 
     return (
         <ProfileContext.Consumer>
-            {({ user, changeProfile }) => (
+            {({ changeProfile }) => (
                 <Screen>
                     <AvantarsContainer>
                         <Row horizontal>
@@ -107,7 +107,10 @@ const More = (props) => {
                                         image={item.icon}
                                         uri={item.uri}
                                         name={item.name}
-                                        onPress={(item) => selectProfile(props.navigation, item)}
+                                        onPress={() => {
+                                            changeProfile(item);
+                                            selectProfile(props.navigation, item)
+                                        }}
                                     />
                                 );
                             })}

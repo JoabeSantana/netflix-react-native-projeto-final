@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Camera from './screen/Camera';
 import ProfileToEdit from './screen/ProfileToEdit';
 import ChooseIcon from './screen/ChooseIcon';
-import { ProfileContext } from './ProfileContext'
+import { ProfileContext } from './screen/context/ProfileContext';
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
@@ -16,15 +16,17 @@ export default class App extends React.Component {
     super(props);
     this.changeProfile = this.changeProfile.bind(this);
     this.state = {
-      user: 'José',
+      user: null,
       changeProfile: this.changeProfile,
     };
 
   }
 
-  changeProfile(newProfile) {
-    this.setState({ user: newProfile.name });
+  changeProfile(item) {
+    console.log('Profile name: ', item.name);
+    this.setState({ user: item.name });
   }
+
   render() {
     return (
       <ProfileContext.Provider value={this.state} >
