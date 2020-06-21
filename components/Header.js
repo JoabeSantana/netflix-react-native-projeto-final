@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components/native';
+import { translate } from '../languages/utils';
 
 const Container = styled.View`
   align-items: center;
@@ -28,13 +29,13 @@ const Header = () => {
     <Container>
       <Logo resizeMode="contain" source={require('../assets/logo.png')} />
       <Menu>
-        <Label>Séries</Label>
+        <Label>{translate("Series")}</Label>
       </Menu>
       <Menu>
-        <Label>Filmes</Label>
+        <Label>{translate("Movies")}</Label>
       </Menu>
       <Menu>
-        <Label>Minha lista</Label>
+        <Label>{translate("My list")}</Label>
       </Menu>
     </Container>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import { Feather, Ionicons } from '@expo/vector-icons';
-import { useSpring, animated } from 'react-spring';
+import { translate } from '../languages/utils';
 
 const Container = styled.View`
   position: absolute;
@@ -76,24 +76,24 @@ const Hero = () => {
     <Container>
       <Banner resizeMode="contain" source={require('../assets/banner.png')} />
       <Tags>
-        <MenuTag>Envolvente</MenuTag>
+        <MenuTag>{translate("Engaging")}</MenuTag>
         <Separator />
-        <MenuTag>Empolgantes</MenuTag>
+        <MenuTag>{translate("Exciting")}</MenuTag>
       </Tags>
       <MenuHero>
         <Button>
           <Feather name="plus" size={26} color="#FFF" />
-          <TextButton>Minha lista</TextButton>
+          <TextButton>{translate("My list")}</TextButton>
         </Button>
 
         <Play>
           <Ionicons name="ios-play" size={26} />
-          <TextButtonPlay>Assistir</TextButtonPlay>
+          <TextButtonPlay>{translate("To watch")}</TextButtonPlay>
         </Play>
 
         <Button>
           <Feather name="info" size={22} color="#FFF" />
-          <TextButton>Saiba mais</TextButton>
+          <TextButton>{translate("Know more")}</TextButton>
         </Button>
       </MenuHero>
     </Container>

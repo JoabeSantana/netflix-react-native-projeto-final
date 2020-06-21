@@ -12,6 +12,7 @@ import Movies from '../components/Movies';
 import { ProfileContext } from './context/ProfileContext';
 import { getLocation, filterByCountry } from './services/movieFilter';
 import { useSpring, animated } from 'react-spring';
+import { translate } from '../languages/utils';
 
 const Container = styled.ScrollView`
   flex: 1;
@@ -111,12 +112,12 @@ const Home = () => {
                 <Hero />
               </Gradient>
             </AnimatedPoster>
-            <Movies label="Recomendados" data={movies} />
+            <Movies label={translate("Recomended")} data={movies} />
             {nationalMovies && nationalMovies.length > 0 && (
-              <Movies label="Nacionais" data={nationalMovies} />
+              <Movies label={translate("Nationals")} data={nationalMovies} />
             )}
             {user && (
-              <Movies label={`Continuar assistindo como ${user}`} data={getResumeMovie(user)} />
+              <Movies label={translate("Keep watching as") + " " + user} data={getResumeMovie(user)} />
             )}
           </Container>
         </>
